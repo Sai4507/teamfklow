@@ -1,0 +1,22 @@
+{
+  "name": "teamflow",
+  "version": "1.0.0",
+  "description": "TeamFlow - Collaborative platform for software engineering teams",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "apps/backend",
+    "apps/frontend"
+  ],
+  "scripts": {
+    "dev": "concurrently \"npm run dev -w apps/backend\" \"npm run dev -w apps/frontend\"",
+    "build": "npm run build -w apps/backend && npm run build -w apps/frontend",
+    "start": "npm run start -w apps/backend",
+    "test": "npm run test -w apps/backend && npm run test -w apps/frontend",
+    "db:migrate": "npm run db:migrate -w apps/backend",
+    "db:seed": "npm run db:seed -w apps/backend"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
